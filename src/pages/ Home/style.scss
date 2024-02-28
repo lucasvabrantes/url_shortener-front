@@ -1,0 +1,24 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 50px;
+    gap: 2px;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.schema {
+    img {
+        width: 600px;
+    }
+}
