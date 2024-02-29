@@ -1,11 +1,12 @@
 import { Box, Container, Link, TextField, Typography } from "@mui/material";
 import "./style.scss";
+import SendIcon from "@mui/icons-material/Send";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 export const Home = () => {
     return (
         <Container
             sx={{
-                display: "flex",
                 flexDirection: "column",
                 margin: "0 auto",
                 maxWidth: "100vw",
@@ -13,7 +14,7 @@ export const Home = () => {
             }}
         >
             <header className="header">
-                <Typography sx={{ fontSize: "36px" }} variant="h1">
+                <Typography sx={{ fontSize: "32px" }} variant="h1">
                     URL_SHORTENER
                 </Typography>
                 <div className="navContainer">
@@ -24,16 +25,15 @@ export const Home = () => {
             </header>
             <Box
                 sx={{
-                    display: "flex",
                     width: "100%",
                     justifyContent: "center",
+                    flexDirection: "column",
                 }}
                 component="main"
             >
                 <Box
                     component="section"
                     sx={{
-                        display: "flex",
                         width: "100%",
                         justifyContent: "center",
                     }}
@@ -42,12 +42,29 @@ export const Home = () => {
                         <img src="./schema.png" alt="" />
                     </figure>
                 </Box>
-                <Box component="section">
-                    <TextField
-                        id="outlined-basic"
-                        label="Digite aqui sua URL"
-                        variant="outlined"
-                    />
+                <Box
+                    sx={{
+                        width: "100%",
+                    }}
+                    component="section"
+                >
+                    <form className="urlForm">
+                        <TextField
+                            id="outlined-basic"
+                            label="Digite aqui sua URL"
+                            variant="outlined"
+                            className="urlField"
+                        />
+                        <LoadingButton
+                            loadingPosition="start"
+                            loading={false}
+                            variant="contained"
+                            startIcon={<SendIcon />}
+                            type="submit"
+                        >
+                            Shorten URL
+                        </LoadingButton>
+                    </form>
                 </Box>
             </Box>
         </Container>
