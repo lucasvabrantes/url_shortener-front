@@ -1,59 +1,56 @@
-import { Box, Container, Link, TextField, Typography } from "@mui/material";
+import { Box, Container, TextField } from "@mui/material";
 import "./style.scss";
 import SendIcon from "@mui/icons-material/Send";
 import LoadingButton from "@mui/lab/LoadingButton";
+import { Header } from "../../components/Header";
 
 export const Home = () => {
     return (
-        <Container
-            sx={{
-                flexDirection: "column",
-                margin: "0 auto",
-                maxWidth: "100vw",
-                padding: 0,
-            }}
-        >
-            <header className="header">
-                <Typography sx={{ fontSize: "32px" }} variant="h1">
-                    URL_SHORTENER
-                </Typography>
-                <div className="navContainer">
-                    <nav>
-                        <Link>About</Link>
-                    </nav>
-                </div>
-            </header>
-            <Box
+        <>
+            <Header />
+            <Container
+                maxWidth={false}
                 sx={{
-                    width: "100%",
-                    justifyContent: "center",
                     flexDirection: "column",
+                    margin: "0 auto",
+                    maxWidth: "100%",
+                    height: "100vh",
+                    bgcolor: "#FBFEF9",
                 }}
-                component="main"
             >
                 <Box
-                    component="section"
                     sx={{
                         width: "100%",
                         justifyContent: "center",
+                        flexDirection: "column",
+                        alignContent: "center",
+                        alignItems: "center",
                     }}
+                    component="main"
                 >
-                    <figure className="schema">
-                        <img src="./schema.png" alt="" />
-                    </figure>
-                </Box>
-                <Box
-                    sx={{
-                        width: "100%",
-                    }}
-                    component="section"
-                >
+                    <Box
+                        component="section"
+                        sx={{
+                            width: "100%",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <figure className="schema">
+                            <img
+                                src="./schema.png"
+                                alt="Imagem mostra flecha grande se dividindo em pedaços menores, depois reconstituindo-se em uma flecha menor.A flecha grande representa a a URL que você quer encurtar, e a flecha menor representa a sua URL encurtada.As flechas apontam para direita."
+                            />
+                        </figure>
+                    </Box>
                     <form className="urlForm">
                         <TextField
                             id="outlined-basic"
-                            label="Digite aqui sua URL"
+                            label="Cole aqui sua URL"
                             variant="outlined"
                             className="urlField"
+                            sx={{
+                                color: "#222725",
+                            }}
                         />
                         <LoadingButton
                             loadingPosition="start"
@@ -61,12 +58,13 @@ export const Home = () => {
                             variant="contained"
                             startIcon={<SendIcon />}
                             type="submit"
+                            className="sendButton"
                         >
                             Shorten URL
                         </LoadingButton>
                     </form>
                 </Box>
-            </Box>
-        </Container>
+            </Container>
+        </>
     );
 };
