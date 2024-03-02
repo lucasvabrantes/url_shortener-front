@@ -48,6 +48,7 @@ export const Home = () => {
                             label="Cole aqui sua URL"
                             variant="outlined"
                             className="urlField"
+                            color="secondary"
                             sx={{
                                 color: "#222725",
                             }}

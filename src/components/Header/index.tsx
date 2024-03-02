@@ -8,7 +8,7 @@ export const Header = () => {
                 sx={{
                     fontSize: "2rem",
                     fontFamily: "IBM Plex Sans, sans-serif",
-                    color: "#086788",
+                    color: "#2589BD",
                     fontWeight: "700",
                 }}
                 variant="h1"

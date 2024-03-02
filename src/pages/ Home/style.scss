@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     img {
-        width: 600px;
+        width: clamp(200px, 100%, 600px);
     }
 }
 
@@ -31,8 +31,4 @@
     .sendButton {
         width: 200px;
     }
-}
-
-.schema {
-    height: clamp(100px, 40%, 400px);
 }
