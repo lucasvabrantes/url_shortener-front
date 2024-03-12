@@ -3,8 +3,31 @@ import "./style.scss";
 import SendIcon from "@mui/icons-material/Send";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Header } from "../../components/Header";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { TFormSchema, formSchema } from "./formSchema";
+import { useState } from "react";
+import { sendUrl } from "../../providers/sendUrl";
+
+type Url = {
+    url: string;
+};
 
 export const Home = () => {
+    const [newUrl, setNewUrl] = useState("");
+    console.log(newUrl);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<TFormSchema>({ resolver: zodResolver(formSchema) });
+
+    const onSubmit: SubmitHandler<TFormSchema> = async (formData: Url) => {
+        console.log(formData);
+        const newUrlGenerated = await sendUrl(formData);
+        setNewUrl(newUrlGenerated);
+    };
+
     return (
         <>
             <Header />
@@ -42,8 +65,9 @@ export const Home = () => {
                             />
                         </figure>
                     </Box>
-                    <form className="urlForm">
+                    <form onSubmit={handleSubmit(onSubmit)} className="urlForm">
                         <TextField
+                            {...register("url")}
                             id="outlined-basic"
                             label="Cole aqui sua URL"
                             variant="outlined"
@@ -64,6 +88,7 @@ export const Home = () => {
                             Shorten URL
                         </LoadingButton>
                     </form>
+                    {newUrl ? newUrl : null}
                 </Box>
             </Container>
         </>
